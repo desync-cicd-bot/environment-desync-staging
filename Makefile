@@ -12,8 +12,15 @@ build: clean
 	helm dependency build ${DIR}
 	helm lint ${DIR}
 
-install: 
+install:
 	helm upgrade ${NAMESPACE} ${DIR} --install --namespace ${NAMESPACE} --debug
+
+test:
+	ADDRESS=`kubectl \
+					--namespace jx-staging \
+					get ingress go-demo-6 \
+					-o jsonpath="{.spec.rules[0].host}"` \
+	go test -v
 
 delete:
 	helm delete --purge ${NAMESPACE}  --namespace ${NAMESPACE}
