@@ -9,4 +9,4 @@ dependencies:
   version: 2.3.89
 - name: go-demo-6
   repository: http://jenkins-x-chartmuseum:8080
-  version: 1.0.331
+  version: 1.0.332
